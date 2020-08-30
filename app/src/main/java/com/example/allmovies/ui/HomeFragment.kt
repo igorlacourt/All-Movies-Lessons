@@ -1,7 +1,6 @@
 package com.example.allmovies.ui
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.allmovies.MainActivity
 
 import com.example.allmovies.R
+import com.example.allmovies.viewmodel.HomeViewModel
 import javax.inject.Inject
 
 class HomeFragment : Fragment() {

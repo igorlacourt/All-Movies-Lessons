@@ -2,10 +2,8 @@ package com.example.allmovies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
 import com.example.allmovies.di.MainComponent
 import com.example.allmovies.di.MoviesApplication
-import com.example.allmovies.ui.HomeViewModel
 
 class MainActivity : AppCompatActivity() {
 

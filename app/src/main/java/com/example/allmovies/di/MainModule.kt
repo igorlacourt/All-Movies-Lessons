@@ -1,7 +1,7 @@
 package com.example.allmovies.di
 
 import androidx.lifecycle.ViewModel
-import com.example.allmovies.ui.HomeViewModel
+import com.example.allmovies.viewmodel.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

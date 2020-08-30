@@ -1,6 +1,7 @@
 package com.example.allmovies.di
 
 import com.example.allmovies.AppConstants
+import com.example.allmovies.network.NetworkResponseAdapterFactory
 import com.example.allmovies.network.TmdbApi
 import dagger.Module
 import dagger.Provides
@@ -53,6 +54,7 @@ class NetworkModule {
             .baseUrl(AppConstants.BASE_URL)
             .client(logginClient)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .build()
     }
 
