@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.home_fragment, container, false)
-        viewModel.getTrending()
+
         return view
     }
 

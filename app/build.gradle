@@ -65,4 +65,10 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.1.1"
 
     implementation "androidx.navigation:navigation-fragment-ktx:2.1.0"
+
+    // Tests
+    testImplementation "org.mockito:mockito-core:3.3.3"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.8"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 }
