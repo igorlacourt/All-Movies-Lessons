@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.allmovies.MainActivity
 
 import com.example.allmovies.R
+import com.example.allmovies.databinding.HomeFragmentBinding
 import com.example.allmovies.viewmodel.HomeViewModel
 import javax.inject.Inject
 
@@ -24,13 +28,35 @@ class HomeFragment : Fragment() {
         (requireActivity() as MainActivity).mainComponent.inject(this)
     }
 
+    private lateinit var binding: HomeFragmentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.home_fragment, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.home_fragment, container, false
+        )
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-        return view
+        attachObservers()
+
+        return binding.root
+    }
+
+    private fun attachObservers() {
+        listsOfMoviesObserver()
+    }
+
+    private fun listsOfMoviesObserver() {
+        viewModel.listsOfMovies?.observe(viewLifecycleOwner, Observer { lists ->
+            lists?.let {
+                binding.rvListsOfMovies.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                binding.rvListsOfMovies.adapter = ListsOfMoviesAdapter(requireContext(), lists)
+            }
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
